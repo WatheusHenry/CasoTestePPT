@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Slides</title>
+  <style>
+    body{
+        text-align: center;
+        width: 10%;
+        margin: auto;
+    }
+  </style>
+</head>
+<body>
+
+    <h1>Gerador de Slides com Tabela</h1>
+
+    <div style="margin: auto;display: grid;grid-template-columns: (2fr,2);">
+        <label for="input1">Caso de Teste: </label>
+        <input type="text" id="input1"><br>
+
+        <label for="input2">Nome do Projeto: </label>
+        <input type="text" id="input2"><br>
+
+        <label for="input3">Sprint: </label>
+        <input type="text" id="input3"><br>
+
+        <label for="input4">História: </label>
+        <input type="text" id="input4"><br>
+
+        <label for="input5">Versão Testada: </label>
+        <input type="text" id="input5"><br>
+
+        <label for="input6">Status: </label>
+        <input type="text" id="input6"><br>
+
+        <label for="input7">Observação: </label>
+        <input type="text" id="input7"><br>
+    </div>
+
+    <button style="width: 15rem; margin: auto;" id="gerarSlideBtn">Gerar Slide</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.3.0/dist/pptxgen.bundle.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
