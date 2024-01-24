@@ -1,0 +1,67 @@
+body {
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+main {
+  width: 50rem;
+  padding: 5rem;
+  display: flex;
+  margin: auto;
+  gap: 5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(184, 184, 184);
+  padding: 0.5rem;
+  box-shadow: 5px 11px 22px -15px rgba(0, 0, 0, 0.51);
+  -webkit-box-shadow: 5px 11px 22px -15px rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: 5px 11px 22px -15px rgba(0, 0, 0, 0.51);
+}
+.form {
+  padding: 2rem;
+  gap: 0.5rem;
+  display: grid;
+  width: 50%;
+}
+.formImages {
+  margin-right: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  gap: 0.5rem;
+  display: grid;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(184, 184, 184);
+}
+label {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: rgb(113, 113, 113);
+}
+.input {
+  display: grid;
+}
+
+input {
+  border-radius: 0.5rem;
+  border: 1px solid rgb(184, 184, 184);
+  padding: 0.5rem;
+  box-shadow: 5px 11px 22px -15px rgba(0, 0, 0, 0.51);
+  -webkit-box-shadow: 5px 11px 22px -15px rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: 5px 11px 22px -15px rgba(0, 0, 0, 0.51);
+}
+button {
+  margin: 2rem;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(184, 184, 184);
+  cursor: pointer;
+  box-shadow: 5px 11px 22px -15px rgba(0, 0, 0, 0.51);
+  -webkit-box-shadow: 5px 11px 22px -15px rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: 5px 11px 22px -15px rgba(0, 0, 0, 0.51);
+}
