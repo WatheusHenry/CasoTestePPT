@@ -49,11 +49,11 @@ function gerarSlide() {
   ];
 
   const tableOptions = {
-    x: 2,
+    x: 1,
     y: 1.5,
-    w: "80%",
+    w: 10,
     rowH: 0.5,
-    colW: [3.0, 3.0],
+    colW: [3.0, 5.0],
     fontSize: 14,
     border: { type: "solid", pt: 1, color: "000000" },
     align: "center",
