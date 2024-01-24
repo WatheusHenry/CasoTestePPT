@@ -93,7 +93,7 @@ function gerarSlide() {
       slide2.addText(textContent, {
         x: 0.3,
         y: 0,
-        w: 2,
+        w: 3,
         h: 1,
         fontSize: 14,
         color: "000000",
@@ -123,7 +123,7 @@ function gerarSlide() {
       slide2.addText(textContent2, {
         x: 3.5,
         y: 0,
-        w: 2,
+        w: 3,
         h: 1,
         fontSize: 14,
         color: "000000",
@@ -153,7 +153,7 @@ function gerarSlide() {
       slide2.addText(textContent3, {
         x: 6.7,
         y: 0,
-        w: 2,
+        w: 3,
         h: 1,
         fontSize: 14,
         color: "000000",
