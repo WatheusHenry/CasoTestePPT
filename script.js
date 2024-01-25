@@ -50,7 +50,7 @@ function gerarSlide() {
 
   const tableOptions = {
     x: 1,
-    y: 1.5,
+    y: 2.3,
     w: 10,
     rowH: 0.5,
     colW: [3.0, 5.0],
@@ -73,112 +73,71 @@ function gerarSlide() {
   const slide2 = pptx.addSlide();
   slide2.background = { color: "FFFFFF" }; // Definindo uma cor de fundo para o segundo slide
 
-  const textContent = document.getElementById("inputTextImage").value; // Obtendo o texto do input
-  const imageInput = document.getElementById("imageInput");
+  // Função para adicionar imagem e texto ao slide
+  function addImageToSlide(imageInputId, textInputId, xPosition) {
+    return new Promise((resolve, reject) => {
+      const textContent = document.getElementById(textInputId).value;
+      const imageInput = document.getElementById(imageInputId);
 
-  if (imageInput.files && imageInput.files[0]) {
-    const file = imageInput.files[0];
-    const reader = new FileReader();
+      if (imageInput.files && imageInput.files[0]) {
+        const file = imageInput.files[0];
+        const reader = new FileReader();
 
-    reader.onload = function (e) {
-      const imageOptions = {
-        data: e.target.result,
-        x: 0.3,
-        y: 1,
-        w: 3,
-        h: 4,
-      };
-      slide2.addImage(imageOptions);
+        reader.onload = function (e) {
+          const imageOptions = {
+            data: e.target.result,
+            x: xPosition,
+            y: 1,
+            w: 3,
+            h: 4.5,
+          };
+          slide2.addImage(imageOptions);
 
-      slide2.addText(textContent, {
-        x: 0.3,
-        y: 0,
-        w: 3,
-        h: 1,
-        fontSize: 14,
-        color: "000000",
-      });
+          slide2.addText(textContent, {
+            x: xPosition,
+            y: 0,
+            w: 3,
+            h: 1,
+            fontSize: 14,
+            color: "000000",
+          });
 
-      pptx.writeFile("CT0000.pptx");
-    };
+          resolve();
+        };
 
-    reader.readAsDataURL(file);
-  }
-  const textContent2 = document.getElementById("inputTextImage2").value; // Obtendo o texto do input
-  const imageInput2 = document.getElementById("imageInput2");
-  if (imageInput2.files && imageInput2.files[0]) {
-    const file = imageInput2.files[0];
-    const reader = new FileReader();
+        reader.onerror = reject;
 
-    reader.onload = function (e) {
-      const imageOptions = {
-        data: e.target.result,
-        x: 3.5,
-        y: 1,
-        w: 3,
-        h: 4,
-      };
-      slide2.addImage(imageOptions);
-
-      slide2.addText(textContent2, {
-        x: 3.5,
-        y: 0,
-        w: 3,
-        h: 1,
-        fontSize: 14,
-        color: "000000",
-      });
-
-      pptx.writeFile("CT0000.pptx");
-    };
-
-    reader.readAsDataURL(file);
-  }
-  const textContent3 = document.getElementById("inputTextImage3").value; // Obtendo o texto do input
-  const imageInput3 = document.getElementById("imageInput3");
-  if (imageInput3.files && imageInput3.files[0]) {
-    const file = imageInput3.files[0];
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-      const imageOptions = {
-        data: e.target.result,
-        x: 6.7,
-        y: 1,
-        w: 3,
-        h: 4,
-      };
-      slide2.addImage(imageOptions);
-
-      slide2.addText(textContent3, {
-        x: 6.7,
-        y: 0,
-        w: 3,
-        h: 1,
-        fontSize: 14,
-        color: "000000",
-      });
-
-      pptx.writeFile("CT0000.pptx");
-    };
-
-    reader.readAsDataURL(file);
-  } else {
-    // Caso nenhum arquivo seja selecionado, apenas salva o slide sem a imagem
-    pptx.writeFile("CT0000.pptx");
+        reader.readAsDataURL(file);
+      } else {
+        resolve(); // Resolve imediatamente se não houver arquivo
+      }
+    });
   }
 
-  document.getElementById("input1").value = "";
-  document.getElementById("input2").value = "";
-  document.getElementById("input3").value = "";
-  document.getElementById("input4").value = "";
-  document.getElementById("input5").value = "";
-  document.getElementById("input6").value = "";
-  document.getElementById("input7").value = "";
-  document.getElementById("inputTextImage").value = "";
-  document.getElementById("imageInput").value = "";
-  document.getElementById("inputTextImage2").value = "";
-  document.getElementById("imageInput2").value = "";
-  document.getElementById("inputTextImage3").value = "";
-  document.getElementById("imageInput3").value = "";
+  // Executando todas as promessas de adicionar imagem
+  Promise.all([
+    addImageToSlide("imageInput", "inputTextImage", 0.3),
+    addImageToSlide("imageInput2", "inputTextImage2", 3.5),
+    addImageToSlide("imageInput3", "inputTextImage3", 6.7),
+  ])
+    .then(() => {
+      pptx.writeFile("CT0000.pptx");
+    })
+    .catch((error) => {
+      console.error("Erro ao carregar imagens", error);
+    });
+
+  // document.getElementById("input1").value = "";
+  // document.getElementById("input2").value = "";
+  // document.getElementById("input3").value = "";
+  // document.getElementById("input4").value = "";
+  // document.getElementById("input5").value = "";
+  // document.getElementById("input6").value = "";
+  // document.getElementById("input7").value = "";
+  // document.getElementById("inputTextImage").value = "";
+  // document.getElementById("imageInput").value = "";
+  // document.getElementById("inputTextImage2").value = "";
+  // document.getElementById("imageInput2").value = "";
+  // document.getElementById("inputTextImage3").value = "";
+  // document.getElementById("imageInput3").value = "";
 }
