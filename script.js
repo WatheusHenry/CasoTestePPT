@@ -4,37 +4,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     .addEventListener("click", gerarSlide);
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("addInputBtn").addEventListener("click", addNewInput);
-});
-
-function addNewInput() {
-  const container = document.getElementById("inputsContainer");
-
-  // Criando a div que conterá os inputs
-  const inputDiv = document.createElement("div");
-  inputDiv.className = "formImages";
-
-  // Criando o input de texto
-  const textInput = document.createElement("input");
-  textInput.type = "text";
-  textInput.placeholder = "Insira o texto";
-  textInput.className = "formImage";
-
-  // Criando o input de arquivo (imagem)
-  const fileInput = document.createElement("input");
-  fileInput.type = "file";
-  fileInput.accept = "image/*";
-  fileInput.className = "file-input";
-
-  // Adicionando os inputs à div
-  inputDiv.appendChild(textInput);
-  inputDiv.appendChild(fileInput);
-
-  // Adicionando a div ao container
-  container.appendChild(inputDiv);
-}
-
 function gerarSlide() {
   const pptx = new PptxGenJS();
   const slide = pptx.addSlide();
@@ -113,6 +82,7 @@ function gerarSlide() {
       }
     });
   }
+  const nomeArquivo = document.getElementById("nomeArquivo").value || "Slide";
 
   // Executando todas as promessas de adicionar imagem
   Promise.all([
@@ -121,7 +91,7 @@ function gerarSlide() {
     addImageToSlide("imageInput3", "inputTextImage3", 6.7),
   ])
     .then(() => {
-      pptx.writeFile("CT0000.pptx");
+      pptx.writeFile(nomeArquivo + ".pptx");
     })
     .catch((error) => {
       console.error("Erro ao carregar imagens", error);
